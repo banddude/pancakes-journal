@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pancake's Journal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&family=Special+Elite&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #2a1810;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+            font-family: 'Special Elite', monospace;
+        }
+
+        .letter-container {
+            max-width: 700px;
+            width: 100%;
+        }
+
+        .letter {
+            background: #f4e4c1;
+            background-image:
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 27px,
+                    #e0d4b8 27px,
+                    #e0d4b8 28px
+                );
+            padding: 60px 50px 80px 70px;
+            position: relative;
+            box-shadow:
+                0 0 0 1px #c4a96a,
+                4px 4px 0 #1a0f0a,
+                8px 8px 20px rgba(0,0,0,0.4);
+            border-radius: 2px;
+        }
+
+        .letter::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(ellipse at 20% 20%, rgba(139,90,43,0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(139,90,43,0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 40% 90%, rgba(101,67,33,0.1) 0%, transparent 40%);
+            pointer-events: none;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #8b5a2b;
+        }
+
+        .journal-title {
+            font-family: 'Special Elite', monospace;
+            font-size: 28px;
+            color: #3d2914;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 0 rgba(139,90,43,0.3);
+        }
+
+        .date {
+            font-family: 'Special Elite', monospace;
+            font-size: 14px;
+            color: #5c3d1e;
+            letter-spacing: 2px;
+        }
+
+        .day-header {
+            font-family: 'Special Elite', monospace;
+            font-size: 16px;
+            color: #4a3520;
+            text-align: center;
+            margin: 20px 0 30px 0;
+            letter-spacing: 1px;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .content p {
+            font-size: 16px;
+            line-height: 24px;
+            color: #1a0f0a;
+            margin-bottom: 24px;
+            text-indent: 0;
+        }
+
+        .red-margin {
+            position: absolute;
+            left: 50px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #c4626e;
+            opacity: 0.6;
+        }
+
+        .holes {
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            padding: 80px 0;
+        }
+
+        .hole {
+            width: 16px;
+            height: 16px;
+            background: #2a1810;
+            border-radius: 50%;
+            box-shadow:
+                inset 0 2px 4px rgba(0,0,0,0.6),
+                0 0 0 2px rgba(0,0,0,0.1);
+        }
+
+        .countdown {
+            font-family: 'Special Elite', monospace;
+            font-size: 18px;
+            color: #3d2914;
+            text-align: right;
+            margin-top: 40px;
+            letter-spacing: 1px;
+        }
+
+        .stamp {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            width: 80px;
+            height: 100px;
+            border: 3px solid #8b0000;
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: rotate(5deg);
+            opacity: 0.7;
+        }
+
+        .stamp-inner {
+            font-family: 'Special Elite', monospace;
+            font-size: 10px;
+            color: #8b0000;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1.4;
+        }
+
+        
+        .signature {
+            margin-top: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 8px;
+        }
+
+        .paw-print {
+            width: 45px;
+            height: 45px;
+            opacity: 0.85;
+        }
+
+        .signature-name {
+            font-family: 'Special Elite', monospace;
+            font-size: 18px;
+            color: #3d2914;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 15px 10px;
+            }
+
+            .letter {
+                padding: 30px 20px 50px 45px;
+            }
+
+            .journal-title {
+                font-size: 20px;
+                letter-spacing: 1px;
+            }
+
+            .date {
+                font-size: 12px;
+            }
+
+            .day-header {
+                font-size: 14px;
+            }
+
+            .content p {
+                font-size: 18px;
+                line-height: 26px;
+                margin-bottom: 26px;
+            }
+
+            .red-margin {
+                left: 30px;
+            }
+
+            .holes {
+                left: 10px;
+                padding: 60px 0;
+            }
+
+            .hole {
+                width: 12px;
+                height: 12px;
+            }
+
+            .stamp {
+                width: 60px;
+                height: 75px;
+                top: 20px;
+                right: 20px;
+            }
+
+            .stamp-inner {
+                font-size: 8px;
+            }
+
+            .coffee-stain {
+                display: none;
+            }
+
+            .countdown {
+                font-size: 16px;
+            }
+
+            .signature-name {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="letter-container">
+        <div class="letter">
+            <div class="red-margin"></div>
+            <div class="holes">
+                <div class="hole"></div>
+                <div class="hole"></div>
+                <div class="hole"></div>
+            </div>
+
+            <div class="stamp">
+                <div class="stamp-inner">Korea<br>Feb<br>2026</div>
+            </div>
+
+            
+            <div class="header">
+                <h1 class="journal-title">Pancake's Journal</h1>
+                <div class="date">Sunday, February 1, 2026</div>
+            </div>
+
+            <div class="day-header">Day 1 - Mom left for something called Korea</div>
+
+            <div class="content">
+                <p>Mom is gone. Dad showed me where on a map. It's very far. He said two weeks. I will count the days.</p>
+
+                <p>Gam Gam is here. Kit stayed home with us this morning while Dad drove Mom to the airport. When Dad came back he smelled like coffee and his eyes were wet. I licked his hand. I think that's my job. I don't know what I'm actually supposed to be doing around here.</p>
+
+                <p>Then Dad took Kit and Gam Gam to a place called Bubble Planet. I was not invited. When they came home, Dad said he lost his hat in something called a ball pit but found it after 15 minutes. They also had to sign papers about balloon allergies, which Dad thought was weird. I agree. Balloons are suspicious.</p>
+
+                <p>After that they went to Arts District and played skee ball and ate lunch. Kit made a 40 point shot. I don't know what that means but everyone seemed impressed. They came home smelling like fries. No fries for me.</p>
+
+                <p>Then, finally, they came back for me. We were going to Riverside Park but Kit changed her mind so we went to Chevy instead. Gam Gam held my leash while Kit played on the playground. I got dragged around a lot. Gam Gam is small but determined.</p>
+
+                <p>Then Arion and Alex and Danny showed up. Everyone put on their pads. Kit and Dad skated. Kit tried to drop in. She fell hard the first time. Then she got back up and did it with no hands at all. A bunch of people clapped. I barked. I don't fully understand skating but I know courage when I see it.</p>
+
+                <p>Arion got hit in the head with a scooter. He was wearing his helmet. He was fine. Scooters are also suspicious.</p>
+
+                <p>We came home. Leftovers for dinner. Kit did bath and bedtime with Gam Gam. Asleep by 7:45.</p>
+
+                <p>I successfully removed the squeaker from the hedgehog toy I've been working on.</p>
+
+                <p>The house is the same but different. I will guard it extra carefully until Mom comes back.</p>
+
+                <div class="countdown">13 more days.</div>
+
+                <div class="signature">
+                    <img class="paw-print" src="paw.png" alt="paw print">
+                    <div class="signature-name">Pancake</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
