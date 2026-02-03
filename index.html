@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pancake's Journal</title>
-    <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&family=Special+Elite&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --line-height: 24px;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -19,11 +23,18 @@
             justify-content: center;
             padding: 40px 20px;
             font-family: 'Special Elite', monospace;
+            font-size: 16px;
+            line-height: var(--line-height);
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
         }
 
         .letter-container {
             max-width: 700px;
             width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
         }
 
         .letter {
@@ -32,11 +43,12 @@
                 repeating-linear-gradient(
                     0deg,
                     transparent,
-                    transparent 23px,
-                    #e0d4b8 23px,
-                    #e0d4b8 24px
+                    transparent calc(var(--line-height) - 1px),
+                    #e0d4b8 calc(var(--line-height) - 1px),
+                    #e0d4b8 var(--line-height)
                 );
-            padding: 60px 50px 80px 70px;
+            background-position-y: 19px;
+            padding: calc(var(--line-height) * 2) 50px calc(var(--line-height) * 3) 70px;
             position: relative;
             box-shadow:
                 0 0 0 1px #c4a96a,
@@ -61,24 +73,26 @@
 
         .header {
             text-align: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
+            margin-bottom: var(--line-height);
+            padding-bottom: var(--line-height);
             border-bottom: 2px solid #8b5a2b;
         }
 
         .journal-title {
             font-family: 'Special Elite', monospace;
             font-size: 28px;
+            line-height: var(--line-height);
             color: #3d2914;
             letter-spacing: 3px;
             text-transform: uppercase;
-            margin-bottom: 10px;
+            margin-bottom: var(--line-height);
             text-shadow: 1px 1px 0 rgba(139,90,43,0.3);
         }
 
         .date {
             font-family: 'Special Elite', monospace;
             font-size: 14px;
+            line-height: var(--line-height);
             color: #5c3d1e;
             letter-spacing: 2px;
         }
@@ -86,9 +100,10 @@
         .day-header {
             font-family: 'Special Elite', monospace;
             font-size: 16px;
+            line-height: var(--line-height);
             color: #4a3520;
             text-align: center;
-            margin: 20px 0 30px 0;
+            margin-bottom: var(--line-height);
             letter-spacing: 1px;
         }
 
@@ -99,10 +114,9 @@
 
         .content p {
             font-size: 16px;
-            line-height: 24px;
+            line-height: var(--line-height);
             color: #1a0f0a;
-            margin-bottom: 24px;
-            text-indent: 0;
+            margin-bottom: var(--line-height);
         }
 
         .red-margin {
@@ -139,10 +153,10 @@
         .countdown {
             font-family: 'Special Elite', monospace;
             font-size: 16px;
-            line-height: 24px;
+            line-height: var(--line-height);
             color: #3d2914;
             text-align: right;
-            margin-top: 24px;
+            margin-top: var(--line-height);
             letter-spacing: 1px;
         }
 
@@ -171,25 +185,23 @@
             line-height: 1.4;
         }
 
-        
         .signature {
-            margin-top: 48px;
+            margin-top: calc(var(--line-height) * 2);
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            gap: 0;
         }
 
         .paw-print {
-            width: 48px;
-            height: 48px;
+            width: calc(var(--line-height) * 2);
+            height: calc(var(--line-height) * 2);
             opacity: 0.85;
         }
 
         .signature-name {
             font-family: 'Special Elite', monospace;
             font-size: 16px;
-            line-height: 24px;
+            line-height: var(--line-height);
             color: #3d2914;
         }
 
@@ -199,7 +211,7 @@
             }
 
             .letter {
-                padding: 30px 20px 50px 45px;
+                padding: calc(var(--line-height) * 1) 20px calc(var(--line-height) * 2) 45px;
             }
 
             .journal-title {
@@ -213,12 +225,6 @@
 
             .day-header {
                 font-size: 14px;
-            }
-
-            .content p {
-                font-size: 18px;
-                line-height: 26px;
-                margin-bottom: 26px;
             }
 
             .red-margin {
@@ -245,23 +251,13 @@
             .stamp-inner {
                 font-size: 8px;
             }
-
-            .coffee-stain {
-                display: none;
-            }
-
-            .countdown {
-                font-size: 16px;
-            }
-
-            .signature-name {
-                font-size: 22px;
-            }
         }
     </style>
 </head>
 <body>
     <div class="letter-container">
+
+        <!-- Day 2 -->
         <div class="letter">
             <div class="red-margin"></div>
             <div class="holes">
@@ -274,7 +270,48 @@
                 <div class="stamp-inner">Korea<br>Feb<br>2026</div>
             </div>
 
-            
+            <div class="header">
+                <h1 class="journal-title">Pancake's Journal</h1>
+                <div class="date">Monday, February 2, 2026</div>
+            </div>
+
+            <div class="day-header">Day 2 - The Nap Sack Mission</div>
+
+            <div class="content">
+                <p>Kit woke up at 6:45 and went straight into Gam Gam's room. I followed. That is protocol. Breakfast was blueberries, mini waffles, and yogurt. I sat under the table and waited. Nothing fell.</p>
+
+                <p>Then there was a crisis. The nap sack was missing. Dad and Gam Gam looked everywhere. They took Kit to school without it and hoped it was there. It was not. So we went on a rescue mission to Target. I stayed in the car while they picked out a new one. It has a character called Bluey on it. I have opinions about Bluey but I will keep them to myself.</p>
+
+                <p>They brought it back to school and saved the day. Then when Gam Gam picked Kit up later, the school found the original one. So now there are two. I have not eaten either of them. I want that on the record.</p>
+
+                <p>While Dad worked, I curled up next to him on the couch. I barked at Gam Gam when she came back inside. I do this every time. I know who she is. I just think it's important to be thorough.</p>
+
+                <p>Gam Gam picked up Kit and took her to gymnastics. They came home and we all had dinner together. Kit did bath and bedtime with Gam Gam again. The routine is holding.</p>
+
+                <p>Dad seems quieter than usual. I think that helped.</p>
+
+                <div class="countdown">12 more days.</div>
+
+                <div class="signature">
+                    <img class="paw-print" src="paw.png" alt="paw print">
+                    <div class="signature-name">Pancake</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 1 -->
+        <div class="letter">
+            <div class="red-margin"></div>
+            <div class="holes">
+                <div class="hole"></div>
+                <div class="hole"></div>
+                <div class="hole"></div>
+            </div>
+
+            <div class="stamp">
+                <div class="stamp-inner">Korea<br>Feb<br>2026</div>
+            </div>
+
             <div class="header">
                 <h1 class="journal-title">Pancake's Journal</h1>
                 <div class="date">Sunday, February 1, 2026</div>
@@ -297,7 +334,7 @@
 
                 <p>Arion got hit in the head with a scooter. He was wearing his helmet. He was fine. Scooters are also suspicious.</p>
 
-                <p>We came home. Leftovers for dinner. Kit did bath and bedtime with Gam Gam. Asleep by 7:45.</p>
+                <p>We came home and had leftovers for dinner. Kit did bath time and bedtime with Gam Gam. She was asleep by 7:45.</p>
 
                 <p>I successfully removed the squeaker from the hedgehog toy I've been working on.</p>
 
@@ -311,6 +348,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 </body>
 </html>
